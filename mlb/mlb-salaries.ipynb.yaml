@@ -50,6 +50,7 @@ cells:
         <div class="col-sm-1"><img src="https://knowledgeanyhow.org/static/images/favicon_32x32.png" style="margin-top: -6px"/></div>
         <div class="col-sm-11">In IBM Knowledge Anyhow Workbench, you can drag/drop the file on your workbench browser tab to simplify the uploading process.</div>
     </div>
+    </div>
 - cell_type: code
   source: |-
     import pandas as pd
