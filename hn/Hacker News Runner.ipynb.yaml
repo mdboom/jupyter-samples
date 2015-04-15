@@ -1,0 +1,84 @@
+cells:
+- cell_type: markdown
+  source: |-
+    # Hacker News Daily Runner
+
+    Executes the `Hacker News and AlchemyAPI.ipynb` notebook to aggregate data over time. Meant to be left running indefinitely in the background so that the job scheduler can execute once a day.
+
+    You can use this pattern of running notebooks on a pre-defined schedules in your own notebooks that collect data or compute analysis over time.
+
+    ## Prerequisites
+
+    ```
+    !pip install schedule
+    !pip install runipy
+    ```
+- cell_type: code
+  source: |-
+    import schedule
+    import time
+    import subprocess
+  metadata:
+    collapsed: false
+  execution_count: null
+- cell_type: code
+  source: |-
+    NOTEBOOK_FILENAME = 'Hacker News and AlchemyAPI.ipynb'
+  metadata:
+    collapsed: false
+  execution_count: null
+- cell_type: code
+  source: |-
+    def run_notebook():
+        subprocess.check_call(['runipy', '-o', NOTEBOOK_FILENAME])
+  metadata:
+    collapsed: false
+  execution_count: null
+- cell_type: code
+  source: |-
+    def aggregate_hacker_news_data():
+        try:
+            run_notebook()
+        except Exception:
+            import traceback
+            traceback.print_exc()
+  metadata:
+    collapsed: false
+  execution_count: null
+- cell_type: code
+  source: |-
+    schedule.every().hour.do(aggregate_hacker_news_data)
+    #schedule.every().minute.do(aggregate_hacker_news_data)
+  metadata:
+    collapsed: false
+  execution_count: null
+- cell_type: code
+  source: |-
+    while True:
+        schedule.run_pending()
+        time.sleep(30)
+  metadata:
+    collapsed: false
+  execution_count: null
+- cell_type: code
+  source: |
+  metadata:
+    collapsed: true
+  execution_count: null
+metadata:
+  kernelspec:
+    display_name: Python 2
+    language: python
+    name: python2
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 2
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython2
+    version: 2.7.6
+nbformat: 4
+nbformat_minor: 0
