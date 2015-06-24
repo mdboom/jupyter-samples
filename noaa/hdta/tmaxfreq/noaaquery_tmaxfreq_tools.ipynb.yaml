@@ -7,7 +7,7 @@ cells:
     # <help>
   metadata:
     collapsed: true
-  execution_count: 1
+  execution_count: 3
 - cell_type: code
   source: |-
     # <api>
@@ -22,7 +22,7 @@ cells:
     import datetime as dt
 
     ## Use this global variable to specify the path for station summary files.
-    NOAA_STATION_SUMMARY_PATH = ".noaa/hdta/derived/summaries/"
+    NOAA_STATION_SUMMARY_PATH = "/resources/noaa-hdta/data/derived/15mar2015/summaries/"
 
     ## Build Station List
     station_detail_colnames = ['StationID','State','Name',
@@ -46,7 +46,7 @@ cells:
 
     def fetch_station_list():
         station_list = []
-        raw_files = os.path.join('.noaa/hdta/derived/summaries/','','*_sum.csv')
+        raw_files = os.path.join(NOAA_STATION_SUMMARY_PATH,'','*_sum.csv')
         for index, fname in enumerate(glob.glob(raw_files)):
             f = get_filename(fname).split('_')[0]
             station_list.append(str(f))
@@ -198,9 +198,14 @@ cells:
             except Exception as e:
                 print("Widget Error: {0}").format(e.message)
             renderer(station_id, high_rec_freq)
+  outputs:
+  - output_type: stream
+    name: stderr
+    text: |
+      :0: FutureWarning: IPython widgets are experimental and may change in the future.
   metadata:
     collapsed: false
-  execution_count: 2
+  execution_count: 1
 metadata:
   celltoolbar: Dashboard
   kernelspec:
