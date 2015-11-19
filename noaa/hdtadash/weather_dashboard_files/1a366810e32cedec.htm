@@ -1,0 +1,27 @@
+<template id="station_records_combo_widget" is="urth-core-bind" channel="noaaquery">
+    <template is="dom-if" if="{{frequencyResultsAvailable}}">
+        <template is="dom-if" if="{{isAboveFreqFactor}}">
+            <urth-core-function id="stationRecordsFunc" 
+                ref="plot_record_results"
+                arg-rectype="[[recType]]"
+                result="{{stationRecordsPlot}}" auto>
+            </urth-core-function>
+            <urth-core-function id="stationDurationsFunc" 
+                ref="plot_duration_results"
+                arg-rectype="[[recType]]"
+                result="{{stationDurationsPlot}}" auto>
+            </urth-core-function>
+            <paper-card heading="Station {{station.0}} Records Per Day" elevation="0">
+                <p>The current {{recType}} temperature record for each day that has experienced more than {{occurrenceFactor}} new record events since the station has come online.</p>
+                <img src="{{stationRecordsPlot}}"/><br/>
+            </paper-card>
+            <paper-card heading="Duration of Station {{station.0}} Records Per Day" elevation="0">
+                <p>For each day that has experienced more than {{occurrenceFactor}} {{recType}} temperature records, some days have had records stand for a large portion of the life of the station.</p>
+                <img src="{{stationDurationsPlot}}"/>
+            </paper-card>
+        </template>
+        <template is="dom-if" if="{{!isAboveFreqFactor}}">
+            <p>This weather station has not experienced any days with greater than {{occurrenceFactor}} new {{recType}} records.</p>
+        </template>
+    </template>
+</template>

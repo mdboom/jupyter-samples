@@ -1,0 +1,18 @@
+<template id="station_detail_combo_widget" is="urth-core-bind" channel="noaaquery">
+    <urth-core-function id="renderFoliumMapFunc" 
+        ref="render_map"
+        result="{{foliumMap}}" auto>
+    </urth-core-function>
+    <template is="dom-if" if="{{stationQueryResult}}">
+        <paper-card style="width: 100%;" heading="Statewide Stations" elevation="1">
+            <p>These are the weather stations monitoring local conditions. Select a station to explore historical record temperatures.</p>
+            <urth-viz-table datarows="{{ stationQueryResult.data }}" selection="{{station}}" columns="{{ stationQueryResult.columns }}" rows-visible=20>
+            </urth-viz-table>
+        </paper-card>
+        <div>
+            <template is="dom-if" if="{{isMap}}">
+                <urth-raw-html html="{{foliumMap}}"/>
+            </template>
+        </div>
+    </template>
+</template>

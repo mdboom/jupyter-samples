@@ -1,0 +1,23 @@
+<template id="tpl" is="urth-core-bind" channel="urthenv">
+    <urth-core-dataframe id="f1" ref="aDataFrame" value="{{df}}" auto ></urth-core-dataframe>
+
+    <p>Name of first person: <strong>{{ df.data.0.0 }}</strong></p>
+    
+    <urth-viz-table datarows="{{ df.data }}" selection="{{sel}}" columns="{{ df.columns }}" rows-visible=6>
+        <urth-viz-col index="4" format="$0,0.00" type="numeric"></urth-viz-col>
+        <urth-viz-col index="3" format="$0,0.0" type="numeric"></urth-viz-col>
+    </urth-viz-table>
+    <template is="dom-if" if="{{showMoreInfo}}">
+        <div class="bcard">
+            <div class="info">
+                <p>Details for selected person are:</p>
+                <div class="line full-name"><span>{{sel.0}}</span> <span>{{sel.1}}</span></div>
+                <span class="line title">{{sel.2}}</span>
+                <span class="line phone-number">{{sel.3}}</span>
+                <span class="line email">{{sel.4}}</span>
+                <span class="line website">{{sel.5}}</span>
+            </div>
+            <div class="logo"></div>
+        </div>
+    </template>
+</template>

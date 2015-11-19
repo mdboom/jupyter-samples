@@ -1,0 +1,129 @@
+cells:
+- cell_type: code
+  source: |-
+    %%html
+    <link rel="stylesheet" type="text/css" href="bcard.css">
+    <link rel="import" href="urth_components/paper-dropdown-menu/paper-dropdown-menu.html" is='urth-core-import' package='PolymerElements/paper-dropdown-menu'>
+    <link rel="import" href="urth_components/paper-menu/paper-menu.html" is='urth-core-import' package='PolymerElements/paper-menu'>
+    <link rel="import" href="urth_components/paper-item/paper-item.html" is='urth-core-import' package='PolymerElements/paper-item'>
+    <link rel="import" href="urth_components/paper-button/paper-button.html" is='urth-core-import' package='PolymerElements/paper-button'>
+    <link rel="import" href="urth_components/paper-card/paper-card.html" is='urth-core-import' package='PolymerElements/paper-card'>
+    <link rel="import" href="urth_components/paper-slider/paper-slider.html" is='urth-core-import' package='PolymerElements/paper-slider'>
+    <link rel="import" href="urth_components/google-map/google-map.html" is='urth-core-import' package='GoogleWebComponents/google-map'>
+    <link rel="import" href="urth_components/google-map/google-map-marker.html" is='urth-core-import' package='GoogleWebComponents/google-map'>
+    <link rel="import" href="urth_components/urth-viz-table/urth-viz-table.html" is='urth-core-import'>
+    <link rel="import" href="urth_components/urth-viz-chart/urth-viz-chart.html" is='urth-core-import'>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: urth_env_test_files/655a7ac16833af1f.htm
+  metadata:
+    collapsed: false
+  execution_count: 3
+- cell_type: code
+  source: |-
+    import pandas as pd
+    aDataFrame = pd.DataFrame([
+            ["John", "Johnson","Web Developer", "13", "1234325431", "http://javi.er"], 
+            ["Jane", "Doe","Software Engineer", "456", "1434215411", "http://www.ibm.us"],
+            ["Joe", "Smith","Rockstar Dev", "4526", "1237328421", "http://cooldevs.org/xavier"]
+        ], columns=["First ", "Last Name", "Role", "Amount", "Bigger Number", "Website"]
+    )
+    aDataFrame
+  outputs:
+  - output_type: execute_result
+    data:
+      text/plain: |2-
+          First  Last Name               Role Amount Bigger Number  \
+        0   John   Johnson      Web Developer     13    1234325431   
+        1   Jane       Doe  Software Engineer    456    1434215411   
+        2    Joe     Smith       Rockstar Dev   4526    1237328421   
+
+                              Website  
+        0              http://javi.er  
+        1           http://www.ibm.us  
+        2  http://cooldevs.org/xavier  
+      text/html: urth_env_test_files/080dc9782bf8feeb.htm
+    execution_count: 4
+  metadata:
+    collapsed: false
+  execution_count: 4
+- cell_type: code
+  source: |-
+    from urth.widgets.widget_channels import channel
+    channel("urthenv").set("showMoreInfo", "")
+  metadata:
+    collapsed: true
+  execution_count: 14
+- cell_type: markdown
+  source: |-
+    #### Run code below and then select a row.
+- cell_type: code
+  source: |-
+    %%html
+    <template id="tpl" is="urth-core-bind" channel="urthenv">
+        <urth-core-dataframe id="f1" ref="aDataFrame" value="{{df}}" auto ></urth-core-dataframe>
+
+        <p>Name of first person: <strong>{{ df.data.0.0 }}</strong></p>
+        
+        <urth-viz-table datarows="{{ df.data }}" selection="{{sel}}" columns="{{ df.columns }}" rows-visible=6>
+            <urth-viz-col index="4" format="$0,0.00" type="numeric"></urth-viz-col>
+            <urth-viz-col index="3" format="$0,0.0" type="numeric"></urth-viz-col>
+        </urth-viz-table>
+        <template is="dom-if" if="{{showMoreInfo}}">
+            <div class="bcard">
+                <div class="info">
+                    <p>Details for selected person are:</p>
+                    <div class="line full-name"><span>{{sel.0}}</span> <span>{{sel.1}}</span></div>
+                    <span class="line title">{{sel.2}}</span>
+                    <span class="line phone-number">{{sel.3}}</span>
+                    <span class="line email">{{sel.4}}</span>
+                    <span class="line website">{{sel.5}}</span>
+                </div>
+                <div class="logo"></div>
+            </div>
+        </template>
+    </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: urth_env_test_files/c6d37236fd8a96e7.htm
+  metadata:
+    collapsed: false
+  execution_count: 15
+- cell_type: markdown
+  source: |-
+    #### Now run the code below to see how it effects the table widget.
+- cell_type: code
+  source: |-
+    channel("urthenv").set("showMoreInfo", True)
+  metadata:
+    collapsed: true
+  execution_count: 17
+- cell_type: code
+  source: |-
+    channel("urthenv").set("showMoreInfo", "")
+  metadata:
+    collapsed: true
+  execution_count: 18
+metadata:
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.4.3
+nbformat: 4
+nbformat_minor: 0
