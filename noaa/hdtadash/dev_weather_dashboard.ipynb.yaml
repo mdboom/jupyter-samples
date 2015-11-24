@@ -13,15 +13,6 @@ cells:
           row: 0
           width: 6
 - cell_type: markdown
-  source: |-
-    >STATUS NOTES:
-    1. all works using urth-core-watch patch and a few hacks.
-    2. ToDo: revisit code after v0.1.1 is released.
-  metadata:
-    urth:
-      dashboard:
-        hidden: true
-- cell_type: markdown
   source: |2-
 
     ## Analysis
@@ -89,7 +80,7 @@ cells:
     collapsed: true
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 2
 - cell_type: code
   source: |-
     import os
@@ -108,7 +99,7 @@ cells:
     urth:
       dashboard:
         hidden: true
-  execution_count: null
+  execution_count: 3
 - cell_type: markdown
   source: |-
     ### Load urth components
@@ -133,12 +124,18 @@ cells:
     <link rel="import" href="./urth-raw-html.html">
     <!-- HACK: Use Property Watch patch for v0.1.0 of declarativewidgets; This can be removed for v0.1.1 -->
     <link rel="import" href="./urth-core-watch.html">
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/f2d0a329919ff6af.htm
   metadata:
     collapsed: false
     urth:
       dashboard:
         hidden: true
-  execution_count: null
+  execution_count: 4
 - cell_type: markdown
   source: |-
     ### Declare Globals
@@ -155,7 +152,7 @@ cells:
     collapsed: true
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 5
 - cell_type: markdown
   source: |-
     ### Prepare Filesystem
@@ -211,7 +208,7 @@ cells:
     collapsed: true
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 6
 - cell_type: markdown
   source: |-
     ## Data Munging
@@ -328,7 +325,7 @@ cells:
     collapsed: false
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 7
 - cell_type: markdown
   source: |-
     ## Exploratory Analysis
@@ -397,7 +394,7 @@ cells:
     collapsed: false
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 8
 - cell_type: code
   source: |-
     # Use the Polymer Channel API to establish two-way binding between elements and data.
@@ -423,7 +420,7 @@ cells:
     collapsed: true
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 9
 - cell_type: markdown
   source: |-
     ## Visualization
@@ -452,6 +449,12 @@ cells:
             <blockquote>Would you consider these results representative of extreme weather changes?</blockquote>
         </paper-card>
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/f3d0df5538ca8adf.htm
   metadata:
     collapsed: false
     urth:
@@ -461,7 +464,7 @@ cells:
           height: 8
           row: 11
           width: 6
-  execution_count: null
+  execution_count: 10
 - cell_type: markdown
   source: |-
     ### Weather Channel Widget
@@ -478,6 +481,12 @@ cells:
             <center><embed src="http://i.imwx.com/images/maps/current/curwx_600x405.jpg" width="500" height="300"></center>
         <div id="wc_map">
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/9d9146c449e2cb9b.htm
   metadata:
     collapsed: false
     urth:
@@ -487,7 +496,7 @@ cells:
           height: 11
           row: 0
           width: 6
-  execution_count: null
+  execution_count: 11
 - cell_type: markdown
   source: |-
     ### Preferences Widget
@@ -517,7 +526,7 @@ cells:
     collapsed: true
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 12
 - cell_type: code
   source: |-
     %%html
@@ -557,12 +566,18 @@ cells:
             </div>
         </paper-card>
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/de440f422f781181.htm
   metadata:
     collapsed: false
     urth:
       dashboard:
         hidden: true
-  execution_count: null
+  execution_count: 13
 - cell_type: markdown
   source: |-
     ### Dashboard Control Widget
@@ -595,7 +610,7 @@ cells:
     collapsed: false
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 14
 - cell_type: code
   source: |-
     %%html
@@ -648,6 +663,12 @@ cells:
             </div>
         </paper-card>
     </template
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/498942aa35bde503.htm
   metadata:
     collapsed: false
     urth:
@@ -657,7 +678,7 @@ cells:
           height: 15
           row: 4
           width: 6
-  execution_count: null
+  execution_count: 15
 - cell_type: markdown
   source: |-
     ### Channel Monitor Widget
@@ -705,12 +726,18 @@ cells:
         </table>
         <p class="widget">{{recType}} temperature record analysis using historical NOAA data from weather {{station.5}}.</p>
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/606bcb4f536b8216.htm
   metadata:
     collapsed: false
     urth:
       dashboard:
         hidden: true
-  execution_count: null
+  execution_count: 16
 - cell_type: markdown
   source: |
     ### Station Detail Widget
@@ -747,7 +774,7 @@ cells:
     scrolled: false
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 17
 - cell_type: markdown
   source: |-
     ##### HACK: urth-core-watch seems to misbehave when combined with output elements. The workaround is to split the widget into two.
@@ -766,12 +793,18 @@ cells:
             </urth-core-function>
         </urth-core-watch>
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/233bf753aa4ff258.htm
   metadata:
     collapsed: false
     urth:
       dashboard:
         hidden: true
-  execution_count: null
+  execution_count: 18
 - cell_type: code
   source: |-
     %%html
@@ -789,6 +822,12 @@ cells:
             </template>
         </template>
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/a8998779060d3783.htm
   metadata:
     collapsed: false
     urth:
@@ -798,7 +837,7 @@ cells:
           height: 39
           row: 19
           width: 12
-  execution_count: null
+  execution_count: 19
 - cell_type: markdown
   source: |-
     ### Station Summary Widget
@@ -821,7 +860,7 @@ cells:
     collapsed: true
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 20
 - cell_type: code
   source: |-
     %%html
@@ -840,6 +879,12 @@ cells:
             </template>
         </paper-card> 
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/d77b088ef552df34.htm
   metadata:
     collapsed: false
     urth:
@@ -849,7 +894,7 @@ cells:
           height: 22
           row: 58
           width: 12
-  execution_count: null
+  execution_count: 21
 - cell_type: markdown
   source: |-
     ### Temperature Record Analysis for Selected Station
@@ -946,7 +991,7 @@ cells:
     collapsed: false
     urth:
       dashboard: {}
-  execution_count: null
+  execution_count: 22
 - cell_type: code
   source: |-
     %%html
@@ -960,12 +1005,18 @@ cells:
             </urth-core-function>
         </urth-core-watch>  
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/66a930618d337c03.htm
   metadata:
     collapsed: false
     urth:
       dashboard:
         hidden: true
-  execution_count: null
+  execution_count: 23
 - cell_type: code
   source: |-
     %%html
@@ -1001,6 +1052,12 @@ cells:
             </template>
         </template> 
     </template>
+  outputs:
+  - output_type: display_data
+    data:
+      text/plain: |-
+        <IPython.core.display.HTML object>
+      text/html: dev_weather_dashboard_files/e49444fa16ea8065.htm
   metadata:
     collapsed: false
     urth:
@@ -1010,7 +1067,7 @@ cells:
           height: 51
           row: 80
           width: 12
-  execution_count: null
+  execution_count: 24
 - cell_type: markdown
   source: |-
     ## Conclusion

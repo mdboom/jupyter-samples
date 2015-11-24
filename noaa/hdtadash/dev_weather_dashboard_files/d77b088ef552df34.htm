@@ -1,0 +1,15 @@
+<template id="station_summary_widget" is="urth-core-bind" channel="noaaquery">
+    <urth-core-function id="exploreStationDataFunc" 
+        ref="explore_station_data"
+        arg-station="[[station.0]]"
+        result="{{stationSummaryResult}}" auto>
+    </urth-core-function>
+    <paper-card style="width: 100%;" heading="Station Summary" elevation="1">
+         <template is="dom-if" if="{{stationSummaryResult}}">
+            <p>{{recType}} temperature record analysis using historical NOAA data from weather {{station.5}}.</p>
+            <p>This weather station has been in service and collecting data for {{yearsOfService}} years.</p>
+            <urth-viz-table datarows="{{ stationSummaryResult.data }}" selection="{{dayAtStation}}" columns="{{ stationSummaryResult.columns }}" rows-visible=20>
+            </urth-viz-table>
+        </template>
+    </paper-card> 
+</template>

@@ -1,0 +1,49 @@
+<a name="loaddata"></a>
+<template id="loadCard" is="urth-core-bind" channel="noaaquery">
+    <urth-core-function id="loadDataFunc" 
+        ref="process_query" 
+        arg-fname="{{stationDetail}}"
+        arg-stations="{{stationList}}"
+        arg-statecode="{{stateAbbrev}}"
+        arg-cleanuppref="{{cleanupPreference}}"
+        result="{{stationQueryResult}}"
+        is-ready="{{isloadready}}">
+    </urth-core-function>
+    <paper-card heading="Query Preferences" elevation="1">
+        <div class="card-content">
+            <div>
+                <p class="widget">Which region of weather stations in the USA do you wish to examine?.</p>
+                <paper-dropdown-menu label="Select State" selected-item-label="{{stateAbbrev}}" noink>
+                    <paper-menu class="dropdown-content" selected="{{stateAbbrev}}" attr-for-selected="label">
+                        <template is="dom-repeat" items="[[states]]">
+                            <paper-item label="[[item]]">[[item]]</paper-item>
+                        </template>
+                    </paper-menu>
+                </paper-dropdown-menu>
+            </div>
+            <div>
+                <p class="widget">Are you interested in daily minimum or maximum temperature records per station?.</p>
+                <paper-dropdown-menu label="Select Record Type" selected-item-label="{{recType}}" noink>
+                    <paper-menu class="dropdown-content" selected="[[recType]]" attr-for-selected="label">
+                        <template is="dom-repeat" items="[[recordTypeOptions]]">
+                            <paper-item label="[[item]]">[[item]]</paper-item>
+                        </template>
+                    </paper-menu>
+                </paper-dropdown-menu>
+            </div>
+            <div>
+                <p class="widget">Each weather station has observed more than one new minimum or maximum temperature record event. How many new record occurrences would you consider significant enough to raise concerns about extreme weather fluctuations?.</p>
+                <paper-dropdown-menu label="Select Occurrence Factor" selected-item-label="{{occurrenceFactor}}" noink>
+                    <paper-menu class="dropdown-content" selected="[[occurrenceFactor]]" attr-for-selected="label">
+                        <template is="dom-repeat" items="[[recordOccuranceOptions]]">
+                            <paper-item label="[[item]]">[[item]]</paper-item>
+                        </template>
+                    </paper-menu>
+                </paper-dropdown-menu>
+            </div>
+        </div>
+        <div class="card-actions">
+            <paper-button tabindex="0" disabled="{{!isloadready}}" onClick="loadDataFunc.invoke()">Apply</paper-button>
+        </div>
+    </paper-card>
+</template

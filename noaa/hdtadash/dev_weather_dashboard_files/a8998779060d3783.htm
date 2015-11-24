@@ -1,0 +1,14 @@
+<template id="station_detail_combo_widget" is="urth-core-bind" channel="noaaquery">
+    <paper-card style="width: 100%;" heading="{{stateAbbrev}} Weather Stations" elevation="1">
+        <p>These are the weather stations monitoring local conditions. Select a station to explore historical record temperatures.</p>
+        <urth-viz-table datarows="{{ stationQueryResult.data }}" selection="{{station}}" columns="{{ stationQueryResult.columns }}" rows-visible=20>
+        </urth-viz-table>
+    </paper-card>
+    <template is="dom-if" if="{{isNewQuery}}">
+        <template is="dom-if" if="{{isMap}}">
+            <div>
+                <urth-raw-html html="{{foliumMap}}"/>
+            </div>
+        </template>
+    </template>
+</template>

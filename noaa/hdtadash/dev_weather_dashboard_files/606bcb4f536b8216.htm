@@ -1,0 +1,35 @@
+<template id="channelMonitorWidget" is="urth-core-bind" channel="noaaquery">
+    <h2 class="widget">Channel Monitor</h2>
+    <p class="widget"><b>Query Selections:</b></p>
+    <table border="1" align="center">
+        <tr>
+            <th>Setting</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td>{{stateAbbrev}}</td>
+        </tr>
+        <tr>
+            <td>Record Type</td>
+            <td>{{recType}}</td>
+        </tr>
+        <tr>
+            <td>Occurance Factor</td>
+            <td>{{occurrenceFactor}}</td>
+        </tr>
+        <tr>
+            <td>Station ID</td>
+            <td>{{station.0}}</td>
+        </tr>
+        <tr>
+            <td>Narration</td>
+            <td>{{isNarration}}</td>
+        </tr>
+        <tr>
+            <td>Map View</td>
+            <td>{{isMap}}</td>
+        </tr>
+    </table>
+    <p class="widget">{{recType}} temperature record analysis using historical NOAA data from weather {{station.5}}.</p>
+</template>

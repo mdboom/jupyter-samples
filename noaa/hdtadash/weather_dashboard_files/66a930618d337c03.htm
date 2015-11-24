@@ -1,0 +1,10 @@
+<template id="station_synopsis_data_widget" is="urth-core-bind" channel="noaaquery">
+    <urth-core-watch value="{{station.0}}">
+        <urth-core-function id="stationRecordFreqFunc"
+            ref="explore_record_temperature_frequency" 
+            arg-rectype="[[recType]]"
+            arg-recfreqfactor="[[occurrenceFactor]]"
+            result="{{stationFreqRecordsResult}}" auto>
+        </urth-core-function>
+    </urth-core-watch>  
+</template>
